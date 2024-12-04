@@ -59,7 +59,37 @@
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      numerator: "",
+      denominator: "",
+      operator: "",
+      result: null,
 
+      // Define active field 
+      currentField: "numerator"
+    };
+  },
+  methods: {
+    // Add number to current field
+    appendNumber(number) {
+      if (this.currentField === "numerator") {
+        this.numerator += number;
+      } else {
+        this.denominator += number;
+      }
+    },
+
+    //  Set selected operator for operation
+    setOperation(operator) {
+      this.operation = operator;
+
+      // Pass to next field (denominator)
+      this.currentField = "denominator";
+    }
+  }
+}
 </script>
 
 <style scoped>
