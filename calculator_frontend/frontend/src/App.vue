@@ -1,50 +1,58 @@
 <template>
   <div class="calculator">
     <!-- Display for numerator and denominator and result -->
-    <p>{{ numerator || "Enter your operation" }} {{ operator || "" }} {{ denominator || "" }}</p>
-    <p>{{ result || "" }}</p>
-  </div>
+    <!-- TEMPORANEAMENTE METTO CAMPI STATICI -->
+    <div class="display">
+      <p>Numerator + Denominator</p>
+      <p>Result</p>
+    </div>
 
-  <!-- If you click on a numeric operator move from numeratore to denominator -->
+    <!-- <p>{{ numerator || "Enter your operation" }} {{ operator || "" }} {{ denominator || "" }}</p>
+    <p>{{ result || "" }}</p> -->
 
-  <div class="operators">
-    <button @="setOperation('+')">+</button>
-    <button @="setOperation('-')">-</button>
-    <button @="setOperation('*')">*</button>
-    <button @="setOperation('/')">/</button>
-  </div>
 
-  <!-- Numeric keybord and equal button -->
-  <div class="numeric_keybord">
-    <!-- Numeric keybord -->
-    <div class="button">
+    <!-- If you click on a numeric operator move from numeratore to denominator -->
 
-      <!-- Numbers 1 to 3 -->
-      <div class="row">
-        <button @click="appendNumber(1)">1</button>
-        <button @click="appendNumber(2)">2</button>
-        <button @click="appendNumber(3)">3</button>
-      </div>
+    <div class="operators">
+      <button @="setOperation('+')">+</button>
+      <button @="setOperation('-')">-</button>
+      <button @="setOperation('*')">*</button>
+      <button @="setOperation('/')">/</button>
+    </div>
 
-      <!-- Numbers 4 to 6 -->
-      <div class="row">
-        <button @click="appendNumber(4)">4</button>
-        <button @click="appendNumber(5)">5</button>
-        <button @click="appendNumber(6)">6</button>
-      </div>ù
-      <!-- Numbers 7 to 9 -->
-      <div class="row">
-        <button @click="appendNumber(7)">7</button>
-        <button @click="appendNumber(8)">8</button>
-        <button @click="appendNumber(9)">9</button>
-      </div>
+    <!-- Numeric keybord and equal button -->
+    <div class="numeric_keybord">
+      <!-- Numeric keybord -->
+      <div class="button">
 
-      <!-- Numbers 0 and clear button -->
-      <div class="row">
-        <button @click="appendNumber(0)">0</button>
+        <!-- Numbers 1 to 3 -->
+        <div class="row">
+          <button @click="appendNumber(1)">1</button>
+          <button @click="appendNumber(2)">2</button>
+          <button @click="appendNumber(3)">3</button>
+        </div>
 
-        <!-- C clear button -->
-        <button class="clear" @click="clearInput">C</button>
+        <!-- Numbers 4 to 6 -->
+        <div class="row">
+          <button @click="appendNumber(4)">4</button>
+          <button @click="appendNumber(5)">5</button>
+          <button @click="appendNumber(6)">6</button>
+        </div>
+        <!-- Numbers 7 to 9 -->
+        <div class="row">
+          <button @click="appendNumber(7)">7</button>
+          <button @click="appendNumber(8)">8</button>
+          <button @click="appendNumber(9)">9</button>
+        </div>
+
+        <!-- Numbers 0 and clear button -->
+        <div class="row">
+          <button @click="appendNumber(0)">0</button>
+
+          <!-- C clear button -->
+          <button class="clear" @click="clearInput">C</button>
+        </div>
+
       </div>
 
       <!-- Equal button-->
@@ -59,6 +67,9 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -71,6 +82,7 @@ export default {
       currentField: "numerator"
     };
   },
+
   methods: {
     // Add number to current field
     appendNumber(number) {
@@ -97,9 +109,14 @@ export default {
       this.denominator = "";
       this.result = null;
       this.currentField = "numerator"
+    },
+
+    // RESULT
+    /*
+        calculateResult {
+      // TODO 
     }
-
-
+    */
   }
 }
 </script>
@@ -137,17 +154,17 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-}
 
-buttons .operators {
-  width: 55px;
-  height: 55px;
-  font-size: 25px;
-  border: 1px solid #8e8e8e;
-  border-radius: 50%;
-  padding: 5px;
-  margin: 5px;
-  cursor: pointer;
+  >button {
+    width: 55px;
+    height: 55px;
+    font-size: 25px;
+    border: 1px solid #8e8e8e;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+  }
 }
 
 /* numeric_keybord */
