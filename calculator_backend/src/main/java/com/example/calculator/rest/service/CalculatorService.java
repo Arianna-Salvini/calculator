@@ -41,7 +41,7 @@ public class CalculatorService {
 
     /**
      * Divide first integer by the second one.
-     *
+     * .
      * If the second integer (denominator) is zero, an ArithmeticException is caught,
      * an error message is printed and zero is returned as result.
      *
