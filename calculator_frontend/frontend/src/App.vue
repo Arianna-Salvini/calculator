@@ -87,7 +87,19 @@ export default {
 
       // Pass to next field (denominator)
       this.currentField = "denominator";
+    },
+
+    //Set clear button; reset all field and restart
+
+    clearInput() {
+      this.numerator = "";
+      this.operator = "";
+      this.denominator = "";
+      this.result = null;
+      this.currentField = "numerator"
     }
+
+
   }
 }
 </script>
