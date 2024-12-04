@@ -128,6 +128,7 @@ export default {
   border-radius: 15px;
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 10px 15px 12px #000;
 
   display: flex;
   flex-direction: column;
@@ -142,9 +143,12 @@ export default {
   text-align: center;
   border-radius: 15px;
   margin-bottom: 20px;
+  box-shadow: 3px 3px 5px inset #8e8e8e;
 
   p {
-    font-size: 20px;
+    font-size: 18px;
+    padding: 5px 5px 0;
+
   }
 }
 
@@ -163,7 +167,9 @@ export default {
     border-radius: 50%;
     padding: 5px;
     margin: 5px;
+    box-shadow: 1px 2px 3px;
     cursor: pointer;
+
   }
 }
 
@@ -189,6 +195,8 @@ export default {
     margin: 5px;
     border: 1px solid #8e8e8e;
     border-radius: 50%;
+    box-shadow: 1px 2px 3px;
+
     cursor: pointer;
   }
 
