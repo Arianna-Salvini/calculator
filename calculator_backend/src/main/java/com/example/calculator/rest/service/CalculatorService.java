@@ -38,8 +38,7 @@ public class CalculatorService {
     public int multiplication(int a, int b) {
         return a * b;
     }
-
-    /**
+      /**
      * Divide first integer by the second one.
      * .
      * If the second integer (denominator) is zero, an ArithmeticException is caught,
@@ -50,15 +49,11 @@ public class CalculatorService {
      * @return the resul of a by b, or 0 if division is by 0
      */
     public int division(int a, int b) {
-        try {
-            return a / b;
-        } catch (ArithmeticException e) {
-
-            // handle division when denominator is 0: print an error message and 0 as result
-            System.out.println("Error: Division by zero");
-            return 0 ;
-
-        }
+       if (b==0){
+           throw new ArithmeticException("Error: can't divide by 0");
+       }
+       return a/b;
+    }
 
     }
 
