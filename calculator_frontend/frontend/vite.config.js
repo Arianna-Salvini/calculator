@@ -10,9 +10,15 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': 'http://localhost:8080',  // Proxy le richieste API
     },
-  },
-})
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      },
+    },
+  }
+});
