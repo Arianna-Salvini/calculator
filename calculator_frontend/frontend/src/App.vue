@@ -3,21 +3,19 @@
     <!-- Display for numerator and denominator and result -->
     <!-- TEMPORANEAMENTE METTO CAMPI STATICI -->
     <div class="display">
-      <p>Numerator + Denominator</p>
-      <p>Result</p>
+      <!-- <p>Numerator + Denominator</p>
+      <p>Result</p> -->
+      <p>{{ numerator || "Enter your operation" }} {{ operator || "" }} {{ denominator || "" }}</p>
+      <p>{{ result || "" }}</p>
     </div>
-
-    <!-- <p>{{ numerator || "Enter your operation" }} {{ operator || "" }} {{ denominator || "" }}</p>
-    <p>{{ result || "" }}</p> -->
-
 
     <!-- If you click on a numeric operator move from numeratore to denominator -->
 
-    <div class="operators">
-      <button @="setOperation('+')">+</button>
-      <button @="setOperation('-')">-</button>
-      <button @="setOperation('*')">*</button>
-      <button @="setOperation('/')">/</button>
+    <div class="operator">
+      <button @click="setOperation('+')">+</button>
+      <button @click="setOperation('-')">-</button>
+      <button @click="setOperation('*')">*</button>
+      <button @click="setOperation('/')">/</button>
     </div>
 
     <!-- Numeric keybord and equal button -->
@@ -95,7 +93,7 @@ export default {
 
     //  Set selected operator for operation
     setOperation(operator) {
-      this.operation = operator;
+      this.operator = operator;
 
       // Pass to next field (denominator)
       this.currentField = "denominator";
@@ -111,12 +109,42 @@ export default {
       this.currentField = "numerator"
     },
 
-    // RESULT
-    /*
-        calculateResult {
-      // TODO 
+    //Calculating result RESULT; url built and axios call
+
+    calculateResult() {
+
+      let urlBase = "http://localhost:8080/api/calculator/";
+      let url = "";
+      // define operation to do to coombine the correct url
+
+      switch (this.operator) {
+        case "+":
+          url = `${urlBase}sum?a=${this.numerator}&b=${this.denominator}`;
+          break;
+        case "-":
+          url = `${urlBase}sub?a=${this.numerator}&b=${this.denominator}`;
+          break;
+        case "*":
+          url = `${urlBase}multiply?a=${this.numerator}&b=${this.denominator}`;
+          break;
+        case "/":
+          url = `${urlBase}div?a=${this.numerator}&b=${this.denominator}`;
+          break;
+        default:
+          return;
+      }
+      console.log(url);
+
+      axios.get(url)
+        .then((response) => {
+          this.result = response.data;
+          console.log(this.result);
+        })
+        .catch((error) => {
+          console.error("Error", error.message);
+        });
+
     }
-    */
   }
 }
 </script>
@@ -153,7 +181,7 @@ export default {
 
 /* buttons */
 
-.operators {
+.operator {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
