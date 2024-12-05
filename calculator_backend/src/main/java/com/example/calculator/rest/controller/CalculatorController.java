@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController //mark this class as a REST controller, where methods return data (like JSON) instead of views.
 @RequestMapping("api/calculator") //define the base path of all operations
+@CrossOrigin
 
 public class CalculatorController {
 
