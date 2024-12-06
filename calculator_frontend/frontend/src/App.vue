@@ -164,7 +164,7 @@ export default {
 
 .display {
   width: 100%;
-  min-height: 60px;
+  min-height: 120px;
   background-color: #ddd;
   color: #000;
   text-align: center;
@@ -174,8 +174,6 @@ export default {
 
   p {
     font-size: 18px;
-    padding: 5px 5px 0;
-
   }
 }
 
@@ -198,6 +196,11 @@ export default {
     cursor: pointer;
 
   }
+}
+
+.operator button:hover {
+  background-color: #cccccc;
+  box-shadow: 1px 2px 3px inset #000;
 }
 
 /* numeric_keybord */
@@ -229,6 +232,7 @@ export default {
 
   button:hover {
     background-color: #cccccc;
+    box-shadow: 1px 2px 3px inset #000;
   }
 
   /* ClearButton */
